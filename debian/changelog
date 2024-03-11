@@ -1,5 +1,260 @@
-template-repository (1.0-1) unstable; urgency=medium
+autojump (22.5.1-1.1) unstable; urgency=medium
 
-  * Initial release
+  * Non maintainer upload by the Reproducible Builds team.
+  * No source change upload to rebuild on buildd with .buildinfo files.
 
- -- Tsic404 <liuheng@deepin.org>  Sat, 28 Jan 2023 13:46:49 +0800
+ -- Holger Levsen <holger@debian.org>  Sat, 02 Jan 2021 01:07:06 +0100
+
+autojump (22.5.1-1) unstable; urgency=medium
+
+  * New upstream release.
+  * debian/control:
+    - update Standards-Version to 4.1.4.
+    - switch to debhelper level 11.
+  * debian/copyright: switch format URL to HTTPS.
+  * debian/upstream/metadata: add an upstream metadata file.
+
+ -- Tanguy Ortolo <tanguy+debian@ortolo.eu>  Sat, 09 Jun 2018 18:03:29 +0200
+
+autojump (22.5.0-2) unstable; urgency=medium
+
+  * debian/autojump.install: install the Zsh completion file to
+    /usr/share/zsh/vendor-completions. (Closes: #843580)
+
+ -- Tanguy Ortolo <tanguy+debian@ortolo.eu>  Thu, 24 Nov 2016 11:26:43 +0100
+
+autojump (22.5.0-1) unstable; urgency=medium
+
+  * New upstream release.
+  * debian/watch: switch to version 4 and use substitutions to make it more
+    generic.
+
+ -- Tanguy Ortolo <tanguy+debian@ortolo.eu>  Sun, 09 Oct 2016 17:55:48 +0200
+
+autojump (22.3.4-1) unstable; urgency=medium
+
+  * New upstream release.
+  * debian/control:
+     - switch Vcs-* URLs to HTTPS.
+     - update Standards-Version to 3.9.8 (no change needed).
+
+ -- Tanguy Ortolo <tanguy+debian@ortolo.eu>  Sat, 23 Jul 2016 19:08:37 +0200
+
+autojump (22.3.0-1) unstable; urgency=medium
+
+  * New upstream release.
+  * debian/control:
+     - update Standards-Version (no change needed).
+     - build-depend on debhelper >= 9.
+  * debian/compat: change to recommended compatibility level 9.
+  * debian/rules: correct the position of dh's --with option, after the
+    commands.
+
+ -- Tanguy Ortolo <tanguy+debian@ortolo.eu>  Thu, 31 Mar 2016 13:44:17 +0200
+
+autojump (22.2.4-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Upstream developer changed, and so did the project website.
+  * debian/control:
+     - update Homepage to new website.
+     - update Build-Depends:
+        + no longer need to build jumpapplet's manpage from DocBook.
+        + use dh_python.
+     - update Enhances:
+        + only Bash >= 4.0 is supported).
+        + add Fish which is now supported.
+        + remove old package zsh-beta which no longer exists.
+          (Closes: #785361)
+     - update Standards-Version to 3.9.6 (no change needed).
+  * debian/watch: update to new website.
+  * debian/copyright: update dates.
+  * debian/patches: refresh (adaptations were needed, but no semantic change).
+  * debian/rules:
+     - disable automatic test, which always tries to download dependencies
+       even if they are already present, which fails without a connection to
+       the Internet.
+     - disable dh_pysupport, which would install maintainer script to
+       byte-compile modules for Python 2.7, which is useless since autojump is
+       run with Python 3.
+     - use dh_python3.
+     - add comments to explain that automatic build and install are disabled
+       and files are manually installed with dh_install instead.
+  * debian/autojump.install:
+     - install Python libraries to /usr/share/autojump.
+     - install autojump to /usr/share/autojump.
+  * debian/autojump.links:
+     - make /usr/bin/autojump a symlink to /usr/share/autojump/autojump
+       (this solves the library import path problem).
+
+ -- Tanguy Ortolo <tanguy+debian@ortolo.eu>  Fri, 24 Jul 2015 11:04:29 +0200
+
+autojump (21.7.1-1) unstable; urgency=medium
+
+  * New upstream release.
+  * debian/autojump.install: install the Fish shell plugin.
+  * debian/control:
+     - Enhances fish.
+     - update Standards-Version to 3.9.5 (no change needed).
+  * debian/patches/remove-makefile-test.patch: remove, applied upstream.
+
+ -- Tanguy Ortolo <tanguy+debian@ortolo.eu>  Sun, 08 Jun 2014 15:35:26 +0200
+
+autojump (21.6.9-1) unstable; urgency=low
+
+  * New upstream release.
+  * debian/patches:
+     - fix-arbitrary-code-flaw.patch: removed, part of that upstream release.
+     - fix-dict-bug.patch: removed, part of that upstream release.
+     - fix-manpage.patch: removed, no longer needed.
+     - runtests-shebang.patch, fix-tests.patch: removed as the tests no longer
+       exist.
+     - remove-makefile-test.patch: remove references to the removed tests in
+       the makefile so it can be built.
+     - man-source.patch, move-to-usrshare.patch: refresh.
+
+ -- Tanguy Ortolo <tanguy+debian@ortolo.eu>  Thu, 15 Aug 2013 15:56:12 +0200
+
+autojump (21.5.1-2) experimental; urgency=low
+
+  * debian/patches: new patches
+     + fix-arbitrary-code-flaw.patch: pick a fix for an arbitrary code
+       execution flaw. (Closes: #706252) (CVE-2013-2012)
+     + fix-dict-bug.patch: fix a bug that rendered the --purge option
+       unusable. (Closes: #705516)
+
+ -- Tanguy Ortolo <tanguy+debian@ortolo.eu>  Sun, 28 Apr 2013 20:21:34 +0200
+
+autojump (21.5.1-1) experimental; urgency=low
+
+  * New upstream release. (Closes: #704660)
+  * debian/control:
+     + remove the jumpapplet package, dropped by upstream.
+     + remove the DM-Upload-Allowed field, deprecated and no longer useful for
+       this package anyway.
+     + update Standards-Version (required removing the DM-Upload-Allowed from
+       debian/control).
+  * debian/rules:
+     + avoid running upstream's Makefile.
+     + stop building jumpapplet's man page which no longer exists.
+  * debian/copyright:
+     + update with new upstream author.
+     + removes the entry related to jumpapplet, which no longer exists.
+  * debian/patches:
+     + jumpapplet-*.patch: removed, no longer relevant with jumpapplet
+       removed.
+     + *.patch: refresh.
+     + runtests-shebang.patch: correct runtests.py's shebang.
+     + fix-tests.patch: fix the test suite that was not fully
+       adapted for the new logarithmic growth model.
+     + move-to-usrshare.patch: update header (add Forwarded: not-needed).
+     + man-source.patch: update header (add Forwarded: not-needed).
+  * debian/autojump.install: update for new upstream paths (bin/ and docs/).
+  * debian/watch: use GitHub automatic tarballs from Git tags.
+  * debian/jumpapplet.*: removed, as jumpapplet no longer exists.
+  * debian/autojump.links: removed, no longer needed with jumpapplet removed.
+
+ -- Tanguy Ortolo <tanguy+debian@ortolo.eu>  Mon, 08 Apr 2013 23:57:51 +0200
+
+autojump (20-2) unstable; urgency=low
+
+  * debian/control: make autojump depend on Python 3.2+, where the module
+    argparse was introduced. (Closes: #673008)
+
+ -- Tanguy Ortolo <tanguy+debian@ortolo.eu>  Sat, 26 May 2012 09:38:48 +0200
+
+autojump (20-1) unstable; urgency=low
+
+  * New upstream release.
+  * debian/autojump.links: link autojump to /usr/share/autojump where it is
+    used as a module imported by jumpapplet.
+  * debian/patches:
+     + jumpapplet-include-functions.patch: removed, remplaced by a simpler
+       solution than copying functions from autojump to jumpapplet.
+     + jumpapplet-import-path.patch: import autojump from jumpapplet using a
+       full path.
+     + man-source.patch: updated, the manpage now being written in Markdown
+       and compiled with Pandoc.
+     + fix-manpage.patch: fix the buggy manpage produced by Pandoc.
+     + move-to-usrshare.patch: refreshed.
+     + use-python3.patch: refreshed.
+  * debian/copyright:
+     + updated copyright date (to 2012).
+     + updated to released format.
+  * debian/autojump.docs: README.rst replaced by README.md.
+  * debian/control:
+     + update Standards-Version (no change required).
+     + correct a typo and indicate that the user has to source autojump to be
+       able to use it. (Closes: #649580)
+
+ -- Tanguy Ortolo <tanguy+debian@ortolo.eu>  Sat, 14 Apr 2012 13:59:47 +0200
+
+autojump (18-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Tanguy Ortolo <tanguy+debian@ortolo.eu>  Sat, 10 Dec 2011 23:41:06 +0100
+
+autojump (17-1) unstable; urgency=low
+
+  * New upstream version.
+  * debian/patches:
+     + data_dir.patch: applied by upstream, not needed anymore.
+     + force-pickle-v2.patch: this was a backport from upstream, not needed
+       anymore.
+     + jumpapplet-include-functions.patch: copy functions from autojump to
+       jumpapplet instead of importing them as a temporary workaround (cf.
+       patch header).
+  * debian/copyright: replace the two previous copyright files by this single
+    one to simplify and respect the policy.
+
+ -- Tanguy Ortolo <tanguy+debian@ortolo.eu>  Sun, 02 Oct 2011 22:48:44 +0200
+
+autojump (15-4) unstable; urgency=low
+
+  * debian/patches/force-pickle-v2.patch: document that upstream corrected
+    this in parallel, so this patch will not be necessary by the next release.
+
+ -- Tanguy Ortolo <tanguy+debian@ortolo.eu>  Sun, 24 Jul 2011 20:53:00 +0200
+
+autojump (15-3) unstable; urgency=low
+
+  * debian/patches:
+     + data_dir.patch: fix jumpapplet to use the new XDG compliant
+       directories. (Closes: #633889)
+     + use-python3.patch: use Python 3 for autojump. (Closes: #632224)
+     + force-pickle-v2.patch: force using a serializing (pickle) protocole
+       compatible with both Python 2 and Python 3.
+  * debian/control: let autojump depend on python3.
+  * debian/autojump.lintian-overrides: removed, as this seems to be corrected
+    in Lintian.
+
+ -- Tanguy Ortolo <tanguy+debian@ortolo.eu>  Sat, 23 Jul 2011 13:42:06 +0200
+
+autojump (15-2) unstable; urgency=low
+
+  * Install manpages with dh_installman.
+  * debian/control: updated Standards-Version (no change required).
+
+ -- Tanguy Ortolo <tanguy+debian@ortolo.eu>  Sat, 28 May 2011 11:01:35 +0200
+
+autojump (15-1) unstable; urgency=low
+
+  * New upstream version.
+  * debian/rules: upstream chmod -x'ed autojump.{bash,zsh}, no need to do it
+    here anymore.
+  * debian/patches/jumpapplet-shebang.patch: correct jumpapplet's shebang.
+
+ -- Tanguy Ortolo <tanguy+debian@ortolo.eu>  Sun, 10 Apr 2011 20:20:07 +0200
+
+autojump (14-1) unstable; urgency=low
+
+  * New upstream version.
+
+ -- Tanguy Ortolo <tanguy+debian@ortolo.eu>  Fri, 14 Jan 2011 22:40:00 +0100
+
+autojump (11-1) unstable; urgency=low
+
+  * Initial release (Closes: #580891)
+
+ -- Tanguy Ortolo <tanguy+debian@ortolo.eu>  Tue, 10 Aug 2010 10:22:17 +0200
