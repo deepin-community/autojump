@@ -1,0 +1,17 @@
+Description: Move autojump's scripts to /usr/share
+Author: Tanguy Ortolo <tanguy+debian@ortolo.eu>
+Forwarded: not-needed
+Last-Update: 2013-04-14
+Index: autojump/bin/autojump.sh
+===================================================================
+--- autojump.orig/bin/autojump.sh
++++ autojump/bin/autojump.sh
+@@ -23,4 +23,8 @@ elif [ -s ~/.autojump/share/autojump/aut
+ # check global install
+ elif [ -s /usr/local/share/autojump/autojump.${shell} ]; then
+     source /usr/local/share/autojump/autojump.${shell}
++
++# check Debian install
++elif [ -s /usr/share/autojump/autojump.${shell} ]; then
++    source /usr/share/autojump/autojump.${shell}
+ fi

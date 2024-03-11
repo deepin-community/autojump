@@ -1,0 +1,7 @@
+bin/autojump      usr/share/autojump
+bin/autojump_*.py usr/share/autojump
+bin/autojump.bash usr/share/autojump
+bin/autojump.zsh  usr/share/autojump
+bin/autojump.sh   usr/share/autojump
+bin/autojump.fish usr/share/autojump
+bin/_j            usr/share/zsh/vendor-completions

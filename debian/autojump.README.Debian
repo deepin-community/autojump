@@ -1,0 +1,14 @@
+Autojump for Debian
+-------------------
+
+To use autojump, you need to configure you shell to source
+/usr/share/autojump/autojump.sh on startup.
+
+If you use Bash, add the following line to your ~/.bashrc (for non-login
+interactive shells) and your ~/.bash_profile (for login shells):
+. /usr/share/autojump/autojump.sh
+
+If you use Zsh, add the following line to your ~/.zshrc (for all interactive shells):
+. /usr/share/autojump/autojump.sh
+
+ -- Tanguy Ortolo <tanguy+debian@ortolo.eu> Tue, 10 Aug 2010 07:55:16 +0200
